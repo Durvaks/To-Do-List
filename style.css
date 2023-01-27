@@ -1,0 +1,48 @@
+        /* CSS for the to-do list application */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        #task-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        #task-list li {
+            background-color: #ebe39e;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        .button_li{
+            position: absolute;
+            right: 1%;
+            top: 10%;
+            width: 30%;
+            max-width: 120px;  
+            height: 60%;
+            border-radius: 5px;
+            border: 1px solid grey;           
+            display: block;
+            text-align: center;
+            padding-top: 1%;
+            cursor: pointer;
+        }
