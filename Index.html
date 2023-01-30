@@ -6,22 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-
     <script src="./script.js" defer></script>
+
+    <title>To List</title>
 </head>
+
 <body>
-    <h1>Lista de Tarefas</h1>
-    <input class="clear_list" type="button" value="Limpar Lista">
+    <main>
+        <h1>To List</h1>
+        <input class="clear_list" type="button" value="Limpar Lista">
 
-    <form class="form">
-        <label for="task">Tarefa</label>
-        <input type="text" id="task" name="task">
-        <button type="submit">Add</button>
-    </form>
+        <form class="form">
+            <input type="text" id="task" name="task" placeholder="Escreva aqui o proximo item da lista">
+            <button type="submit" id="task_btn">Add</button>
+        </form>
 
-    <ul id="task-list">
-    </ul>
+        <ul id="task-list">
+        </ul>
+    </main>
 </body>
 
 </html>
