@@ -7,18 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
+    <script src="https://kit.fontawesome.com/6078a00250.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
 
     <title>To List</title>
 </head>
 
 <body>
     <main>
-        <h1>To List</h1>
-        <input class="clear_list" type="button" value="Limpar Lista">
+        <h1 class="title"><span>To List</span><i class="fa-solid fa-table-list"></i></h1>
+        
 
         <form class="form">
-            <input type="text" id="task" name="task" placeholder="Escreva aqui o proximo item da lista">
-            <button type="submit" id="task_btn">Add</button>
+            <input type="text" id="task" name="task" placeholder="Next item list">
+            <input class="clear_list" type="button" value="Limpar Lista">
+            <button type="submit" id="task_btn"><i class="fa-solid fa-pen-to-square"></i></button>
         </form>
 
         <ul id="task-list">

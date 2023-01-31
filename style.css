@@ -5,22 +5,32 @@
             box-sizing: border-box;
         }
         body {
-            font-family: calibri;
+            font-family: 'Sono', sans-serif;
+            background-image: linear-gradient(rgb(0, 225, 255), rgb(22, 87, 107));
+            min-height: 100vh;
         }
 
         main{
             width: 100vw;
-            margin: auto;
+            margin: 1vh auto;
+            min-width: 400px;
         }
 
-        h1 {
+        .title{
             text-align: center;
+            padding: 1em;
+            text-shadow: 3px 2px 3px rgb(202, 192, 231);
         }
+        .title span{
+            margin-right: .5em;
+        }
+
 
         form {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         label {
@@ -34,20 +44,37 @@
             margin: 4vh auto 0;
         }
 
-        .clear_list{
-            position: absolute;
-            top: 16.5vh;
-            left: 10vw;
-        }
         #task{
-            height: 10vh;
+            height: 60px;
             width: 70vw;
+            min-width: 320px;
+            padding: 3%;
             margin-right: 1vw;
+            border-color: rgb(37, 37, 37);
+            border-radius: 5px;
+            box-shadow:0 0 .8em rgb(75, 75, 75);
+            background-color: rgba(80, 80, 80, 0.158);
+            transition: .8s;
+        }
+        #task:focus{
+            background-color: white;
+            border-color: rgb(66, 66, 66);
+            outline: 0;
         }
         #task_btn{
-            height: 10vh;
-            width: 10vw;
+            height: 60px;
+            width: 8vw;
+            min-width: 30px;
+            background-color: rgb(49, 49, 49);
+            border-radius: 5px;
+            color: white;
+            font-size: .9em;
         }
+        #task_btn:active{
+            background-color: rgb(80, 80, 80);
+            color: rgb(148, 124, 255);
+        }
+
 
         #task-list li {
             padding: 1%;
@@ -79,6 +106,12 @@
             user-select: none;
         }
 
+        .clear_list{
+            position: absolute;
+            bottom: -38%;
+            left: 10%;
+            width: 30%;
+        }
 
         .btnRemove{
             display: block;
@@ -88,7 +121,10 @@
             width: 20%;
             cursor: pointer;
             user-select: none;
+            padding-top: 13%;
+            color: white;
+            font-size: 90%;
         }
-        .btnRemove:hover{
+        .btnRemove:active{
             background-color: rgb(209, 0, 0);
         }

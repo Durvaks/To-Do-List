@@ -61,7 +61,10 @@ function createLi(task) {
   btnStats.classList.add("button_li");
   const btnRemove = document.createElement("span");
   btnRemove.classList.add("btnRemove");
-  btnRemove.innerText = "X";
+  const i = document.createElement("i");
+  i.classList.add("fa-solid");
+  i.classList.add("fa-trash-can");  
+  btnRemove.appendChild(i);
   const divButtons = document.createElement("div");
   divButtons.classList.add("divButtons");
 
