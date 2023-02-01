@@ -32,7 +32,7 @@ form.addEventListener('submit', event => {
     // Add the task to the tasks array
     tasks.push({
       "description": elementLi.firstChild.innerText,
-      "stats": elementLi.lastChild.firstChild.innerText
+      "stats": elementLi.lastChild.firstChild.firstChild.classList[1]
     });
 
     // Render the new task to the page
@@ -54,67 +54,73 @@ btn_clearCache.addEventListener("click", () => {
 
 // ######  FUNCTION - create a item List  #######
 function createLi(task) {
-
+  //create elements and include class
   const ListItem = document.createElement('li');
   const description = document.createElement('span');
-  const btnStats = document.createElement('span');
+
+  const btnStats = document.createElement('span');  
   btnStats.classList.add("button_li");
+  const btnStatsI = document.createElement('i');
+  btnStatsI.classList.add("fa-solid");  
+  btnStats.appendChild(btnStatsI);  
+  
+
   const btnRemove = document.createElement("span");
   btnRemove.classList.add("btnRemove");
-  const i = document.createElement("i");
-  i.classList.add("fa-solid");
-  i.classList.add("fa-trash-can");  
-  btnRemove.appendChild(i);
-  const divButtons = document.createElement("div");
+  const btnRemoveI = document.createElement("i")
+  btnRemoveI.classList.add("fa-solid", "fa-trash-can");
+  btnRemove.appendChild(btnRemoveI);
+
+  const divButtons = document.createElement("div");  
   divButtons.classList.add("divButtons");
 
   const options = [
-    "novo item",
-    "pendente",
-    "feito"
+    "fa-plus",
+    "fa-hourglass-half",
+    "fa-check"
   ];
 
   const statsColors = {
-    "novo item": "#ebe39e",
-    "novo item BTN": "white",
+    "fa-plus": "#ebe39e",
+    "fa-plus BTN": "white",
 
-    "pendente": "#ccc",
-    "pendente BTN": "yellow",
+    "fa-hourglass-half": "#ccc",
+    "fa-hourglass-half BTN": "yellow",
 
-    "feito": "#ccc",
-    "feito BTN": "green"
+    "fa-check": "#ccc",
+    "fa-check BTN": "green"
   }
 
   // if from cache
+  console.log(task)
   if (typeof (task) == "object") {
     description.innerText = task.description;
-    btnStats.innerText = task.stats;
-
+    btnStatsI.classList.add(task.stats || 'notClass');
   } else {
     description.innerText = task;
-    btnStats.innerText = options[0];
+    btnStatsI.classList.add(options[0] || 'notClass');
   }
   ListItem.classList.add(`li-${document.querySelectorAll('#task-list li').length}`);
+  
 
   // change style with stats
   changeColor();
   function changeColor() {
-    ListItem.style.backgroundColor = statsColors[btnStats.innerText.toLowerCase()] || "rgb(201, 231, 130)";
-    btnStats.style.backgroundColor = statsColors[btnStats.innerText.toLowerCase() + " BTN"] || "rgb(201, 231, 130)";
+    ListItem.style.backgroundColor = statsColors[btnStats.firstChild.classList[1]] || "rgb(201, 231, 130)";
+    btnStats.style.backgroundColor = statsColors[btnStats.firstChild.classList[1] + " BTN"] || "rgb(201, 231, 130)";
   }
 
   //EVENT BUTTON - to change stats
   btnStats.addEventListener("click", (event) => {
 
-    const btn = event.target;
-    let atualOption = options.indexOf(btn.innerText.toLowerCase())
-    atualOption == options.length-1 ? btn.innerText = options[1] : btn.innerText = options[atualOption+1];
-
+    const btnIcon = btnStats.firstChild;
+    const btnIconClass = btnIcon.classList[1];
+    let atualOption = options.indexOf(btnIconClass);
+    atualOption == options.length-1 ? btnIcon.classList.replace(btnIconClass, options[1]) : btnIcon.classList.replace(btnIconClass, options[atualOption+1]);    
     changeColor();
-
-    const li = event.target.parentNode.parentNode;
+    const li = btnStats.parentNode.parentNode;
     let id = li.classList.value.replace("li-", "");
-    tasks[id].stats = btn.innerText;
+    tasks[id].stats = btnIcon.classList[1];
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
 
@@ -136,7 +142,7 @@ function createLi(task) {
 
   })
 
-  ListItem.appendChild(description);
+  ListItem.appendChild(description);  
   divButtons.appendChild(btnStats);
   divButtons.appendChild(btnRemove);
   ListItem.appendChild(divButtons);
