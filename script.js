@@ -25,6 +25,8 @@ form.addEventListener('submit', event => {
   // Get the value of the input field
   const task = event.target.elements.task.value;
 
+  // Get atual time
+  const thisTime = new Date();
 
   if (task !== "") {
     const elementLi = createLi(task);
@@ -32,7 +34,8 @@ form.addEventListener('submit', event => {
     // Add the task to the tasks array
     tasks.push({
       "description": elementLi.firstChild.innerText,
-      "stats": elementLi.lastChild.firstChild.firstChild.classList[1]
+      "stats": elementLi.lastChild.firstChild.firstChild.classList[1],
+      "creationDate": thisTime
     });
 
     // Render the new task to the page
@@ -48,8 +51,14 @@ form.addEventListener('submit', event => {
 
 // EVENT BUTTON - clear all
 btn_clearCache.addEventListener("click", () => {
-  localStorage.clear();
-  taskList.innerHTML = "";
+  const verify = confirm("want to remove all items from the list?");
+  if (verify) {
+    alert("All itens removed")
+    localStorage.clear();
+    taskList.innerHTML = "";
+  } else {
+    alert("removal canceled")
+  }
 });
 
 // ######  FUNCTION - create a item List  #######
@@ -57,13 +66,14 @@ function createLi(task) {
   //create elements and include class
   const ListItem = document.createElement('li');
   const description = document.createElement('span');
+  description.classList.add("description");
 
-  const btnStats = document.createElement('span');  
+  const btnStats = document.createElement('span');
   btnStats.classList.add("button_li");
   const btnStatsI = document.createElement('i');
-  btnStatsI.classList.add("fa-solid");  
-  btnStats.appendChild(btnStatsI);  
-  
+  btnStatsI.classList.add("fa-solid");
+  btnStats.appendChild(btnStatsI);
+
 
   const btnRemove = document.createElement("span");
   btnRemove.classList.add("btnRemove");
@@ -71,7 +81,7 @@ function createLi(task) {
   btnRemoveI.classList.add("fa-solid", "fa-trash-can");
   btnRemove.appendChild(btnRemoveI);
 
-  const divButtons = document.createElement("div");  
+  const divButtons = document.createElement("div");
   divButtons.classList.add("divButtons");
 
   const options = [
@@ -81,18 +91,17 @@ function createLi(task) {
   ];
 
   const statsColors = {
-    "fa-plus": "#ebe39e",
+    "fa-plus": "transparent",
     "fa-plus BTN": "white",
 
-    "fa-hourglass-half": "#ccc",
-    "fa-hourglass-half BTN": "yellow",
+    "fa-hourglass-half": "transparent",
+    "fa-hourglass-half BTN": "#FFDB58",
 
-    "fa-check": "#ccc",
+    "fa-check": "transparent",
     "fa-check BTN": "green"
   }
 
   // if from cache
-  console.log(task)
   if (typeof (task) == "object") {
     description.innerText = task.description;
     btnStatsI.classList.add(task.stats || 'notClass');
@@ -101,7 +110,7 @@ function createLi(task) {
     btnStatsI.classList.add(options[0] || 'notClass');
   }
   ListItem.classList.add(`li-${document.querySelectorAll('#task-list li').length}`);
-  
+
 
   // change style with stats
   changeColor();
@@ -116,7 +125,7 @@ function createLi(task) {
     const btnIcon = btnStats.firstChild;
     const btnIconClass = btnIcon.classList[1];
     let atualOption = options.indexOf(btnIconClass);
-    atualOption == options.length-1 ? btnIcon.classList.replace(btnIconClass, options[1]) : btnIcon.classList.replace(btnIconClass, options[atualOption+1]);    
+    atualOption == options.length - 1 ? btnIcon.classList.replace(btnIconClass, options[1]) : btnIcon.classList.replace(btnIconClass, options[atualOption + 1]);
     changeColor();
     const li = btnStats.parentNode.parentNode;
     let id = li.classList.value.replace("li-", "");
@@ -129,7 +138,7 @@ function createLi(task) {
   btnRemove.addEventListener("click", (event) => {
     const itemClass = ListItem.classList.value;
     const itemToRemove = document.querySelector("." + itemClass);
-    const verify = confirm("Deseja excluir o item: " + itemToRemove.firstChild.innerText);
+    const verify = confirm("want to remove this item? " + itemToRemove.firstChild.innerText);
 
     if (verify) {
       tasks.splice(itemClass.replace("li-", ""), 1) // remove this item to the takslist - useful for a DOM.
@@ -137,12 +146,12 @@ function createLi(task) {
       localStorage.setItem('tasks', JSON.stringify(tasks)); // update the cache.
 
     } else {
-      alert("Item não foi removido");
+      alert("Item has not been removed");
     }
 
   })
 
-  ListItem.appendChild(description);  
+  ListItem.appendChild(description);
   divButtons.appendChild(btnStats);
   divButtons.appendChild(btnRemove);
   ListItem.appendChild(divButtons);
