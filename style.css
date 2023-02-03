@@ -146,16 +146,17 @@
         .divButtons {
             display: flex;
             justify-content: space-between;
-            width: 15%;
-            height: 1.3em;
-            padding-top: .1em;
+            width: 3em;
+            min-width: 3em;
+            height: 1.2em;
+            margin-left: .5em;
         }
 
         .button_li {
             display: block;
             text-align: center;
             cursor: pointer;
-            padding: 1%;
+            padding: .1em;
             width: 100%;
             user-select: none;
             border-radius: 5px;
@@ -163,7 +164,7 @@
             font-size: .8em;
         }
 
-        .btnRemove {
+        .btnRemove { 
             display: block;
             text-align: center;
             border: 1px solid rgb(0, 0, 0);
@@ -175,7 +176,7 @@
             font-size: 0;
             transition: .4s;
             border-radius: 5px;
-            padding-top: .3em;
+            padding-top: .2em;
         }
 
         .btnRemove:hover {
