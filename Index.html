@@ -15,15 +15,22 @@
     <title>To List</title>
 </head>
 
-<body>
-    <img class="background-svg" src="./image/background.svg" alt="image">
+<body>    
     <main>
-        <h1 class="title"><span>My List</span><i class="fa-solid fa-table-list"></i></h1>
+        <h1 class="title"><span>Lists</span><i class="fa-solid fa-table-list"></i></h1>
+        <div class="btn_lists">
+            <input class="btn new_list" type="button" value="Add List">
+            <input class="btn lists" type="button" value="Lists">
+            <ul id="other_lists"> 
+            </ul>
+        </div>
+        <input class="clear_all" type="button" value="Clear All">
         <form class="form">
             <input type="text" id="task" name="task" placeholder="Next item list">
-            <input class="clear_list" type="button" value="Clear List">
+            <input class="btn clear_list" type="button" value="Clear List">
             <button type="submit" id="task_btn"><i class="fa-solid fa-pen-to-square"></i></button>
         </form>
+        <h2 id="list_title">Title</h2>
         <ul id="task-list">
         </ul>
     </main>
