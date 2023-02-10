@@ -76,7 +76,7 @@ function start() {
     if (task !== "") {
       const elementLi = createLi(task);
       tasks.push({
-        "description": elementLi.firstChild.innerText,
+        "description": elementLi.firstChild.innerHTML,
         "stats": elementLi.lastChild.firstChild.firstChild.classList[1],
         "creationDate": thisTime
       });
@@ -145,7 +145,7 @@ function createLi(task) {
   }
 
   if (typeof (task) == "object") {
-    description.innerText = task.description;
+    description.innerHTML = task.description;
     btnStatsI.classList.add(task.stats || 'notClass');
   } else {
     description.innerText = task;

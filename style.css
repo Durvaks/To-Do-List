@@ -79,7 +79,10 @@
 
         /*TASK INPUT*/
         #task {
+            resize: vertical;
             height: 60px;
+            min-height: 60px;
+            max-height: 200px;
             width: 70%;
             min-width: 320px;
             padding: 3%;
@@ -88,7 +91,7 @@
             border-radius: 5px;
             box-shadow: 0 0 .8em rgb(75, 75, 75);
             background-color: rgba(163, 151, 221, 0.322);
-            transition: .8s;
+            transition: background .8s;
             font-family: 'Sono';
         }
 
