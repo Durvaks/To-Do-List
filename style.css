@@ -7,7 +7,7 @@
 
         body {
             font-family: 'Sono', sans-serif;
-            background-image: linear-gradient(rgb(59, 232, 255), rgb(20, 50, 59));
+            background-image: linear-gradient(rgb(180, 190, 190), rgb(38, 41, 43));
             min-height: 100vh;
         }
 
@@ -27,14 +27,15 @@
         }
 
         #list_title{
-            color: white;
-            font-weight: 300;
-            margin: 25px auto auto auto;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+            margin: 30px auto auto auto;
             text-align: center;
             text-transform: capitalize;
-            text-shadow: 1px 2px 2px rgb(5, 5, 48);
-            max-width: 300px;
-            background: linear-gradient(to right, transparent, rgb(104, 104, 146), transparent);
+            text-shadow: 1px 2px 2px rgb(180, 180, 180);
+            max-width: 50%;
+            border-top: 1px solid rgb(255, 255, 255);
+            padding: .5em;
         }
 
         .clear_all{
@@ -85,7 +86,7 @@
             max-height: 200px;
             width: 70%;
             min-width: 320px;
-            padding: 3%;
+            padding: 1em;
             margin-right: 1%;
             border-color: rgb(37, 37, 37);
             border-radius: 5px;
@@ -171,12 +172,13 @@
             flex-flow: row;
             justify-content: space-between;
             text-transform: capitalize;
-            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.589), rgba(255, 255, 255, 0.418), transparent);
-
+            background-image: linear-gradient(to right, rgba(128, 128, 0, 0.589), rgba(128, 128, 0, 0.589), transparent);
+            color: rgb(0, 0, 0);
+            font-weight: 600;
         }
 
         .description {
-            font-size: .8em;
+            font-size: clamp(.6em,1vw,.8em);
             font-style: italic;
         }
 
